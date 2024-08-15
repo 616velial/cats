@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Pics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Нажми на кнопку, чтобы увидеть котика</h1>
+    <button onclick="showCat()">Показать котика</button>
+    <br><br>
+    <img id="catImage" src="" alt="Котик" style="display: none;">
+
+    <script>
+        function showCat() {
+            // Генерация случайного числа от 1 до 100 для выбора изображения
+            const min = 26000;
+            const max = 27000;
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            // Подставь свой реальный URL вместо example.com
+            const catImage = document.getElementById("catImage");
+            catImage.src = `https://3zvzd.blob.core.windows.net/mimimi/${randomNum}.jpg`;
+            catImage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
