@@ -25,15 +25,20 @@
 
     <script>
         function showCat() {
-            // Генерация случайного числа от 1 до 100 для выбора изображения
+            // Генерация случайного числа в диапазоне от 26000 до 27000
             const min = 26000;
             const max = 27000;
             const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-            // Подставь свой реальный URL вместо example.com
+            
+            // Подставь свой реальный URL
             const catImage = document.getElementById("catImage");
             catImage.src = `https://3zvzd.blob.core.windows.net/mimimi/${randomNum}.jpg`;
             catImage.style.display = 'block';
         }
+
+        // Telegram Web Apps API
+        const telegram = window.Telegram.WebApp;
+        telegram.expand(); // Расширяет приложение на полный экран
     </script>
 </body>
 </html>
