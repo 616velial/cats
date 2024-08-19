@@ -1,44 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Pics</title>
+    <title>Порадуй себя котиком!</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
             text-align: center;
-            padding: 20px;
+            padding: 50px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
         }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            max-width: 600px;
+            color: #f1f1f1;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        button {
+            background: linear-gradient(45deg, #6a3093, #a044ff);
+            border: none;
+            padding: 15px 40px;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #a044ff, #6a3093);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
         img {
-            max-width: 100%;
+            display: none;
+            max-width: 80%;
             height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 5px solid #355c7d;
             margin-top: 20px;
+        }
+
+        body.dimmed {
+            background: linear-gradient(135deg, #a084f4, #5a8fde);
         }
     </style>
 </head>
 <body>
-    <h1>Нажми на кнопку, чтобы увидеть котика</h1>
-    <button onclick="showCat()">Показать котика</button>
-    <br><br>
-    <img id="catImage" src="" alt="Котик" style="display: none;">
+    <div class="content">
+        <h1>Хотите увидеть что-то милое?</h1>
+        <p>Нажмите на кнопку ниже и получите порцию умиления в виде случайного котика. Каждый раз — новый котик, который обязательно поднимет вам настроение!</p>
+        <button onclick="showCat()">Показать мне котика!</button>
+    </div>
+    <img id="catImage" src="" alt="Случайный котик">
 
     <script>
         function showCat() {
-            // Генерация случайного числа в диапазоне от 26000 до 27000
             const min = 26000;
             const max = 27000;
             const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-            
-            // Подставь свой реальный URL
             const catImage = document.getElementById("catImage");
             catImage.src = `https://3zvzd.blob.core.windows.net/mimimi/${randomNum}.jpg`;
             catImage.style.display = 'block';
+
+            document.body.classList.add('dimmed');
         }
 
-        // Telegram Web Apps API
+        // Удалить класс затемнения, если картинка скрывается или другой способ управления
         const telegram = window.Telegram.WebApp;
-        telegram.expand(); // Расширяет приложение на полный экран
+        telegram.expand();
     </script>
 </body>
 </html>
